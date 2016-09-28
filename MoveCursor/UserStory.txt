@@ -1,0 +1,18 @@
+﻿User Story für den Mauszeiger Handler:
+(User Story Vorlage: Als <Rolle/Anwendertyp> möchte ich  <Ziel/Wunsch/Funktion>, um <Nutzen>.)
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+ Titel: Starten
+ --------------
+ Story: Als Benutzer möchte ich auswählen können, wie das Programm gestartet wird.
+
+ Akzeptanzkriterium:
+• Auswahl des Darstellungsmodi mittel "confi.xml"
+• Folgende Modi sind gefordert: 
+	(1) Konsole beim Start sichtbar im Vordergrund 
+	(2) Konsole geht sofort in den Hintergrund, kann aber jederzeit über die Taskleiste bei Windows aufgerufen werden
+	(3) Programm startet im Hintergrund und ist für den Anwender nicht sichtbar
+
+Status:
+• offen
