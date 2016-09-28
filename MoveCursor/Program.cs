@@ -48,30 +48,32 @@ namespace MoveCursor
         /// </summary>
         /// <returns></returns>
         #region
-        [DllImport("kernel32.dll")]
+        /*[DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        const int SW_MINIMIZE = 6;
+        const int SW_MINIMIZE = 6;*/
         #endregion
 
 
         static void Main(string[] args)
         {
             //Konsolen Titel festlegen
-            Console.Title = "Team Weltherschaft - Energiesparmodus veralbern";
+            //Console.Title = "Team Weltherschaft - Energiesparmodus veralbern";
 
             //Fenstergröße der Konsole voreinstellen
-            Console.SetWindowSize(50, 5);
+            //Console.SetWindowSize(50, 5);
 
             //Konsolen Farbe einstellen
-            Console.ForegroundColor = ConsoleColor.Green;
+            //Console.ForegroundColor = ConsoleColor.Green;
 
             //Konsole beim Start minimieren
-            var handle = GetConsoleWindow();
-            ShowWindow(handle, SW_MINIMIZE);
+            //var handle = GetConsoleWindow();
+            //ShowWindow(handle, SW_SHOW);
+
+            //TODO : create object of class ConsoleView
 
             while (true)
             {
