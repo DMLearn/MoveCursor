@@ -4,24 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 /*
  * Author: David Minker
  * --------------------
- * Sample source code for console windows adjustment
- * found on https://limbioliong.wordpress.com/2011/10/14/minimizing-the-console-window-in-c/
+ * Sample source code for console windows adjustment found on
+ * https://limbioliong.wordpress.com/2011/10/14/minimizing-the-console-window-in-c/
+ * --------------------
+ * Sample source code for reading the cursor position found on
+ * http://www.blackwasp.co.uk/GetCursorPos.aspx
  * --------------------
  */
 namespace MoveCursor
 {
-
- 
-    public enum Display
-    {
-        hide = 0,
-        show = 5,
-        minimize = 6
-    }
 
     public struct POINT
     {
@@ -31,6 +27,8 @@ namespace MoveCursor
 
     class ConsoleView
     {
+
+
 
         //DLL Import
         #region  
@@ -55,9 +53,32 @@ namespace MoveCursor
 
             //Konsolen Farbe einstellen
             Console.ForegroundColor = ConsoleColor.Green;
+    
+            int DisplayMode = ReadConfig(); //Default mode is show
+            /*  Hide = 0;
+            *  Show = 5;
+            *  Minimize = 6;
+            */
 
             var handle = GetConsoleWindow();
-            ShowWindow( handle, (int)Display.show );            
+            ShowWindow( handle, DisplayMode );            
+
+        }
+        //TODO: Wenn Zeit ist, die Abfrage der config in den Controller verlegen
+        private int ReadConfig()
+        {
+            string displayMode = ConfigurationManager.AppSettings["displayMode"].ToLower();
+            switch (displayMode)
+            {
+                case "hide":
+                    return 0;
+                case "show":
+                    return 5;
+                case "minimize":
+                    return 6;
+                default:
+                    return 5;
+            }
 
         }
 
