@@ -8,22 +8,24 @@
  Story: Als Benutzer möchte ich auswählen können, wie das Programm gestartet wird.
 
  Akzeptanzkriterium:
-• Auswahl des Darstellungsmodi mittel "confi.xml"
+• Auswahl des Darstellungsmodi mittel "app.config"
 • Folgende Modi sind gefordert: 
 	(1) Konsole beim Start sichtbar im Vordergrund 
 	(2) Konsole geht sofort in den Hintergrund, kann aber jederzeit über die Taskleiste bei Windows aufgerufen werden
 	(3) Programm startet im Hintergrund und ist für den Anwender nicht sichtbar
 
 Status:
-• offen
+• implementiert
+• getestet
+• erledigt
 
 
  Titel: Mausbewegung nach einer definierten Zeit ausführen
  --------------
- Story: Als Benutzer möchte ich , dass das Programm erkennt ob ich die Maus bewegt habe.
+ Story: Als Benutzer möchte ich eingeben, aller wieviel Sekunden der Mauszeiger nach Inaktivität bewegt werden soll.
 
  Akzeptanzkriterium:
-• Programm erkennt die Bewegung und zeigt das auch an 
+• Es können ganzahlige Werte im Bereich zwischen 0...600 in der app.config eingeben werden.
 
 Status:
 • offen

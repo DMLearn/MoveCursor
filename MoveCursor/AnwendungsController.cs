@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 
 namespace MoveCursor
@@ -18,6 +19,8 @@ namespace MoveCursor
 
         public void Ausfuehren()
         {
+
+            int timerInterrrupt = Convert.ToInt16( ConfigurationManager.AppSettings["timerInterrupt"] );
 
             while (true)
             {

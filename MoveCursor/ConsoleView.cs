@@ -90,7 +90,7 @@ namespace MoveCursor
             if (GetCursorPos( out point ) && point.X != _x && point.Y != _y)
             {
                 Console.Clear();
-                Console.WriteLine( "({0},{1})", point.X, point.Y );
+                Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", point.X, point.Y );
                 _x = point.X;
                 _y = point.Y;
             }
