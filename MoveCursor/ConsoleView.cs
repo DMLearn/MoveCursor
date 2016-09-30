@@ -23,13 +23,23 @@ namespace MoveCursor
         Minimize = 6
     }
 
+    public struct POINT
+    {
+        public int X;
+        public int Y;
+    }
+
     class ConsoleView
     {
 
-       [DllImport( "user32.dll" )]
-       static extern IntPtr GetConsoleWindow();
-       [DllImport( "kernel32.dll" )]
-       static extern bool ShowWindow( IntPtr hWnd, int nCmdShow );
+        [DllImport( "user32.dll" )]
+        static extern bool ShowWindow( IntPtr hWnd, int nCmdShow );
+   
+        [DllImport( "kernel32.dll" )]
+        static extern IntPtr GetConsoleWindow();
+        
+        [DllImport( "user32.dll" )]
+        static extern bool GetCursorPos( out POINT lpPoint );
 
         //Konstruktor
         public ConsoleView()
@@ -44,10 +54,24 @@ namespace MoveCursor
             Console.ForegroundColor = ConsoleColor.Green;
 
             var handle = GetConsoleWindow();
-            ShowWindow( handle, (int)Display.Show );
+            ShowWindow( handle, (int)Display.Show );            
 
         }
-        
+
+        private int _x, _y;
+
+        public void ShowMousePosition()
+        {
+            POINT point;
+            if (GetCursorPos( out point ) && point.X != _x && point.Y != _y)
+            {
+                Console.Clear();
+                Console.WriteLine( "({0},{1})", point.X, point.Y );
+                _x = point.X;
+                _y = point.Y;
+            }
+        }
+
 
 
     }

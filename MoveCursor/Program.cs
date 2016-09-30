@@ -18,7 +18,7 @@ namespace MoveCursor
         /// </summary>
         /// <see>See MSDN documentation for further information.</see>
         #region
-        [DllImport("user32.dll")]
+        /*[DllImport("user32.dll")]
         static extern bool GetCursorPos(out POINT lpPoint);
 
         static int _x, _y;
@@ -39,7 +39,7 @@ namespace MoveCursor
                 _x = point.X;
                 _y = point.Y;
             }
-        }
+        }*/
         #endregion
 
 
@@ -56,7 +56,6 @@ namespace MoveCursor
         const int SW_SHOW = 5;
         const int SW_MINIMIZE = 6;*/
         #endregion
-
 
         static void Main(string[] args)
         {
@@ -75,11 +74,16 @@ namespace MoveCursor
 
             //TODO : create object of class ConsoleView
 
-            while (true)
+            /*while (true)
             {
                 //aktuelle Cursor Position ermitteln
                 ShowMousePosition();
-            }
+            }*/
+
+            ConsoleView view = new ConsoleView();
+            AnwendungsController controller = new AnwendungsController(view);
+
+            controller.Ausfuehren();
 
 
 
