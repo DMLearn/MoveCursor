@@ -24,7 +24,7 @@ namespace MoveCursor
 
             while (true)
             {
-                view.ShowMousePosition();
+                view.CheckCursorMovement();
             }
         }
 

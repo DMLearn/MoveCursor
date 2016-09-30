@@ -27,8 +27,13 @@ namespace MoveCursor
 
     class ConsoleView
     {
+        //Variablen und Eigenschaften
+        #region
+        public POINT point { get; private set; }
+        public bool CursorMoved { get; private set; }
 
-
+        private int _x, _y;
+        #endregion
 
         //DLL Import
         #region  
@@ -60,10 +65,15 @@ namespace MoveCursor
             *  Minimize = 6;
             */
 
+            CursorMoved = false;
+            _x = 0;
+            _y = 0;
+
             var handle = GetConsoleWindow();
             ShowWindow( handle, DisplayMode );            
 
         }
+
         //TODO: Wenn Zeit ist, die Abfrage der config in den Controller verlegen
         private int ReadConfig()
         {
@@ -82,19 +92,31 @@ namespace MoveCursor
 
         }
 
-        private int _x, _y;
 
-        public void ShowMousePosition()
+
+        public void ShowMousePosition(int _x, int _y, POINT point)
+        {
+            Console.Clear();
+            Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", point.X, point.Y );
+            Console.WriteLine(CursorMoved);
+
+          }
+
+        public void CheckCursorMovement()
         {
             POINT point;
-            if (GetCursorPos( out point ) && point.X != _x && point.Y != _y)
+            if (GetCursorPos(out point) && point.X != _x && point.Y != _y)
             {
-                Console.Clear();
-                Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", point.X, point.Y );
                 _x = point.X;
                 _y = point.Y;
+                CursorMoved = true;
             }
+            else
+                CursorMoved = false;
+
+            ShowMousePosition(_x, _y, point);
         }
+
 
 
 
