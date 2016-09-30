@@ -18,9 +18,9 @@ namespace MoveCursor
  
     public enum Display
     {
-        Hide = 0,
-        Show = 5,
-        Minimize = 6
+        hide = 0,
+        show = 5,
+        minimize = 6
     }
 
     public struct POINT
@@ -32,6 +32,8 @@ namespace MoveCursor
     class ConsoleView
     {
 
+        //DLL Import
+        #region  
         [DllImport( "user32.dll" )]
         static extern bool ShowWindow( IntPtr hWnd, int nCmdShow );
    
@@ -40,6 +42,7 @@ namespace MoveCursor
         
         [DllImport( "user32.dll" )]
         static extern bool GetCursorPos( out POINT lpPoint );
+        #endregion
 
         //Konstruktor
         public ConsoleView()
@@ -54,7 +57,7 @@ namespace MoveCursor
             Console.ForegroundColor = ConsoleColor.Green;
 
             var handle = GetConsoleWindow();
-            ShowWindow( handle, (int)Display.Show );            
+            ShowWindow( handle, (int)Display.show );            
 
         }
 

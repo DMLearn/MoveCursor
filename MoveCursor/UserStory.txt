@@ -16,3 +16,14 @@
 
 Status:
 • offen
+
+
+ Titel: Mausbewegung nach einer definierten Zeit ausführen
+ --------------
+ Story: Als Benutzer möchte ich , dass das Programm erkennt ob ich die Maus bewegt habe.
+
+ Akzeptanzkriterium:
+• Programm erkennt die Bewegung und zeigt das auch an 
+
+Status:
+• offen
