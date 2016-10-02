@@ -94,27 +94,24 @@ namespace MoveCursor
 
 
 
-        public void ShowMousePosition()
+        public void DisplayResults(int time)
         {
             Console.Clear();
             Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", pointNew.X, pointNew.Y );
+            Console.WriteLine( "Noch {0}s bis zum nächsten Interrupt.", time );
 
           }
 
         public void CheckCursorMovement()
         {
-
             if (GetCursorPos(out pointNew) && pointNew.X != pointOld.X && pointNew.Y != pointOld.Y)
             {
                 pointOld.X = pointNew.X;
                 pointOld.Y = pointNew.Y;
                 CursorMoved = true;
-                ShowMousePosition();
             }
             else
                 CursorMoved = false;
-
-
         }
 
     }

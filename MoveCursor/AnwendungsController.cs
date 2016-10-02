@@ -21,10 +21,14 @@ namespace MoveCursor
         {
 
             int timerInterrrupt = Convert.ToInt16( ConfigurationManager.AppSettings["timerInterrupt"] );
-            
+            int countTime = 0;
+
             while (true)
             {
+                //TODO: create timer for countTime variable in steps of 1 sekunde
                 view.CheckCursorMovement();
+                view.DisplayResults(countTime);
+
             }
         }
 
