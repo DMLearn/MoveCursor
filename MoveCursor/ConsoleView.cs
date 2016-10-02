@@ -23,16 +23,21 @@ namespace MoveCursor
     {
         public int X;
         public int Y;
+
+        public POINT(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
     }
 
     class ConsoleView
     {
         //Variablen und Eigenschaften
         #region
-        public POINT point { get; private set; }
         public bool CursorMoved { get; private set; }
-
-        private int _x, _y;
+        POINT pointNew = new POINT(0, 0);
+        POINT pointOld = new POINT(0, 0);
         #endregion
 
         //DLL Import
@@ -58,16 +63,11 @@ namespace MoveCursor
 
             //Konsolen Farbe einstellen
             Console.ForegroundColor = ConsoleColor.Green;
-    
-            int DisplayMode = ReadConfig(); //Default mode is show
-            /*  Hide = 0;
-            *  Show = 5;
-            *  Minimize = 6;
-            */
+
+            //Window mode: Hide = 0, Show = 5, Minimize = 6 ===> Default moder is set to Show
+            int DisplayMode = ReadConfig(); 
 
             CursorMoved = false;
-            _x = 0;
-            _y = 0;
 
             var handle = GetConsoleWindow();
             ShowWindow( handle, DisplayMode );            
@@ -94,31 +94,28 @@ namespace MoveCursor
 
 
 
-        public void ShowMousePosition(int _x, int _y, POINT point)
+        public void ShowMousePosition()
         {
             Console.Clear();
-            Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", point.X, point.Y );
-            Console.WriteLine(CursorMoved);
+            Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", pointNew.X, pointNew.Y );
 
           }
 
         public void CheckCursorMovement()
         {
-            POINT point;
-            if (GetCursorPos(out point) && point.X != _x && point.Y != _y)
+
+            if (GetCursorPos(out pointNew) && pointNew.X != pointOld.X && pointNew.Y != pointOld.Y)
             {
-                _x = point.X;
-                _y = point.Y;
+                pointOld.X = pointNew.X;
+                pointOld.Y = pointNew.Y;
                 CursorMoved = true;
+                ShowMousePosition();
             }
             else
                 CursorMoved = false;
 
-            ShowMousePosition(_x, _y, point);
+
         }
-
-
-
 
     }
 }

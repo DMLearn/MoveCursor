@@ -21,7 +21,7 @@ namespace MoveCursor
         {
 
             int timerInterrrupt = Convert.ToInt16( ConfigurationManager.AppSettings["timerInterrupt"] );
-
+            
             while (true)
             {
                 view.CheckCursorMovement();
