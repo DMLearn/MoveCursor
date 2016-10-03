@@ -35,7 +35,7 @@ namespace MoveCursor
     {
         //Variablen und Eigenschaften
         #region
-        public bool CursorMoved { get; private set; }
+        public bool CursorMoved { get; set; }
         POINT pointNew = new POINT(0, 0);
         POINT pointOld = new POINT(0, 0);
         #endregion
@@ -93,13 +93,17 @@ namespace MoveCursor
 
         }
 
-
+        public void PrintHelloScreen()
+        {
+            Console.Clear();
+            Console.WriteLine("PSE - Tanz für mich kleine Maus !");
+            Console.WriteLine("*********************************");
+        }
 
         public void DisplayResults(int time)
         {
-            Console.Clear();
-            Console.WriteLine( "Aktuelle Mausposition: X: {0}, Y: {1})", pointNew.X, pointNew.Y );
-            Console.WriteLine( "Noch {0}s bis zum nächsten Interrupt.", time );
+            PrintHelloScreen();
+            Console.WriteLine( "Noch {0}s bis zum nächsten Tanz der Maus.", time );
 
           }
 
@@ -111,8 +115,6 @@ namespace MoveCursor
                 pointOld.Y = pointNew.Y;
                 CursorMoved = true;
             }
-            else
-                CursorMoved = false;
         }
 
     }

@@ -28,27 +28,32 @@ namespace MoveCursor
             Timer timer = new Timer(1000);
             timer.Elapsed += OnTimedEvent; //If timer is excecuted, OnTimedEvent is processed
             timer.Start();
+            view.PrintHelloScreen();
 
             while (true)
             {
-
-                //TODO: create timer for countTime variable in steps of 1 sekunde
                 view.CheckCursorMovement();
-                view.DisplayResults(countTime);
-
             }
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            if (countTime > 0)
+
+            if (countTime > 0 && view.CursorMoved == false)
             {
                 countTime--;
+                view.DisplayResults(countTime);
             }
-
+            else if (countTime > 0 && view.CursorMoved == true)
+            {
+                countTime = configTime;
+                view.CursorMoved = false;
+                view.DisplayResults(countTime);
+            }
             else
             {
                 countTime = configTime;
+                view.DisplayResults(countTime);
             }
                 
         }
