@@ -75,6 +75,7 @@ namespace MoveCursor
         }
 
         //TODO: Wenn Zeit ist, die Abfrage der config in den Controller verlegen
+        //TODO:  Zahlen größer 600 nicht zu lassen
         private int ReadConfig()
         {
             string displayMode = ConfigurationManager.AppSettings["displayMode"].ToLower();
