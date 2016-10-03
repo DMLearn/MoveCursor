@@ -41,7 +41,16 @@ namespace MoveCursor
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            countTime --;
+            if (countTime > 0)
+            {
+                countTime--;
+            }
+
+            else
+            {
+                countTime = configTime;
+            }
+                
         }
 
 
