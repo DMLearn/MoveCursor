@@ -50,6 +50,9 @@ namespace MoveCursor
         
         [DllImport( "user32.dll" )]
         static extern bool GetCursorPos( out POINT lpPoint );
+
+        [System.Runtime.InteropServices.DllImport( "user32.dll" )]
+        static extern bool SetCursorPos( int x, int y );
         #endregion
 
         //Konstruktor
@@ -115,6 +118,12 @@ namespace MoveCursor
                 pointOld.Y = pointNew.Y;
                 CursorMoved = true;
             }
+        }
+
+        public void IncrementCursor()
+        {
+            SetCursorPos( pointOld.X - 1, pointOld.Y );
+            SetCursorPos( pointOld.X, pointOld.Y );
         }
 
     }

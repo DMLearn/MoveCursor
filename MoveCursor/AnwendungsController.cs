@@ -78,6 +78,7 @@ namespace MoveCursor
             {
                 countTime = configTime;
                 view.DisplayResults(countTime);
+                view.IncrementCursor();
             }
                 
         }
