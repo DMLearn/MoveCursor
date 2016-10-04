@@ -16,13 +16,17 @@ namespace MoveCursor
         public AnwendungsController(ConsoleView view)
         {
             this.view = view;
+
         }
 
-        private int configTime = Convert.ToInt16( ConfigurationManager.AppSettings["timerInterrupt"] );
-        private int countTime = 0;
+        Int16 configTime = 30; //Default value
+        Int16 configTimeMax = 600;
+        Int16 countTime = 0;
 
         public void Ausfuehren()
         {
+
+            ReadConfig();
             countTime = configTime;
 
             Timer timer = new Timer(1000);
@@ -33,6 +37,26 @@ namespace MoveCursor
             while (true)
             {
                 view.CheckCursorMovement();
+            }
+        }
+
+        private void ReadConfig()
+        {
+            string configTimeAsString = ConfigurationManager.AppSettings["timerInterrupt"];
+            Int16 result = 0;
+
+            if (Int16.TryParse(configTimeAsString, out result) == true)
+            {
+                result = Convert.ToInt16( configTimeAsString );
+
+                if (result > configTimeMax)
+                {
+                    configTime = configTimeMax;
+                }
+                else
+                {
+                    configTime = result;
+                }
             }
         }
 
