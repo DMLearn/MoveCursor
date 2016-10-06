@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("MoveCursor")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyTitle("PSE - Tanz für mich kleine Maus!")]
+[assembly: AssemblyDescription("Bewegt den Mauszeigern bei Inaktivität des Benutzers.")]
+[assembly: AssemblyConfiguration("Konfigurationen können in der app.config vorgenommen werden.")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MoveCursor")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct( "PSE - Tanz für mich kleine Maus!" )]
+[assembly: AssemblyCopyright("Copyright David Minker ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
