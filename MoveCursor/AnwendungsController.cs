@@ -22,7 +22,7 @@ namespace MoveCursor
         Int16 configTime = 30; //Default value
         Int16 configTimeMax = 600;
         Int16 countTime = 0;
-        int cursorIncrement = 1;
+        int cursorIncrement = 5;
 
         public void Ausfuehren()
         {
